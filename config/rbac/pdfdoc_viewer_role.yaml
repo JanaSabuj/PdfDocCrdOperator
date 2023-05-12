@@ -1,0 +1,27 @@
+# permissions for end users to view pdfdocs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: pdfdoc-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: pdfdoccrdoperator
+    app.kubernetes.io/part-of: pdfdoccrdoperator
+    app.kubernetes.io/managed-by: kustomize
+  name: pdfdoc-viewer-role
+rules:
+- apiGroups:
+  - customtools.janasabuj.github.io
+  resources:
+  - pdfdocs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - customtools.janasabuj.github.io
+  resources:
+  - pdfdocs/status
+  verbs:
+  - get
