@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pdfcrddoc-operator-deployment
+  namespace: system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pdfcrddoc-operator
+  template:
+    metadata:
+      labels:
+        app: pdfcrddoc-operator
+    spec:
+      containers:
+        - name: pdfcrddoc-operator
+          image: sabujjana/pdfcrddoc-operator:v1
+          imagePullPolicy: IfNotPresent
+      serviceAccountName: controller-manager
