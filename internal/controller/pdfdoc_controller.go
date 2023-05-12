@@ -116,7 +116,7 @@ func (r *PdfDocReconciler) CreateJobSpec(doc customtoolsv1.PdfDoc) (batchv1.Job,
 		Command: []string{"/bin/sh"},
 		Args: []string{
 			"-c",
-			fmt.Sprintf("pandoc -V documentclass=ltjsarticle --pdf-engine=lualatex -o /opt/docs/docs.pdf /opt/docs/%s.md", docName),
+			fmt.Sprintf("pandoc -V documentclass=ltjsarticle --pdf-engine=lualatex -o /opt/docs/%s.pdf /opt/docs/%s.md", docName, docName),
 		},
 		VolumeMounts: []corev1.VolumeMount{
 			{
